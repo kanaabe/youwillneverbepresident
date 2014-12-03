@@ -1,3 +1,9 @@
-<% @tweets.each do |tweet| %>
-  <%= tweet.text %><br><br>
+<% if @tweets.size > 0 %>
+	<h2>Your tainted tweets: </h2>
+	<% @tweets.each do |tweet| %>
+	  <%= tweet.text %><br><br>
+	<% end %>
+<% else %>
+	<h2>Good job! Your tweets are squeaky clean. </h2>
 <% end %>
+
