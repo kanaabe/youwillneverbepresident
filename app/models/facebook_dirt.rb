@@ -1,0 +1,3 @@
+class FacebookDirt
+
+end

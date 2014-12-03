@@ -1,0 +1,12 @@
+<!-- <form method="POST" action="/users">
+  <%#= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <label>Enter your twitter handle!
+  <input type="text" name="twitter" autofocus="true"></label>
+  <input type="submit" name="submit" value="Search">
+</form> -->
+
+<%= form_tag users_path, :method => "get" do |f|%>
+  <%= label_tag :twitter_handle %>
+  <%= text_field_tag :twitter_handle %>
+  <%= submit_tag %>
+<% end %>
