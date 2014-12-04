@@ -1,16 +1,13 @@
-<!-- <form method="POST" action="/users">
-  <%#= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-  <label>Enter your twitter handle!
-  <input type="text" name="twitter" autofocus="true"></label>
-  <input type="submit" name="submit" value="Search">
-</form> -->
+<h1>You Will Never Be President</h1>
 
+<h3>Step 1: <%= link_to "Login with Facebook", '/auth/facebook' %></h3>
+<h3>Step 2: Tell us some of your other aliases</h3>
 <%= form_tag users_path, :method => "get" do |f|%>
   <%= label_tag :twitter_handle %>
-  <%= text_field_tag :twitter_handle %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= submit_tag %>
+  <%= text_field_tag :twitter_handle %><br>
+  <%= label_tag "Old Email" %>
+  <%= text_field_tag :email %><br>
+  <h3>Step 3: Search!</h3>
+  <%= submit_tag "Search"%>
 <% end %>
-
-<%= link_to "Facebook Login", '/auth/facebook' %>
+</br>
