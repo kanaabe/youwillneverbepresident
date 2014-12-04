@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'auth/facebook', as: "auth_provider"
   get 'auth/facebook/callback', to: 'users#login'
+  get 'logout', to: 'users#logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,3 +8,11 @@
   <%= @user.email %>
 <% end %>
 
+<% if @facebook_statuses.size > 0 %>
+	<h2>Your profane Facebook statuses: </h2>
+	<% @facebook_statuses.each do |status| %>
+	  <%= status %><br><br>
+	<% end %>
+<% else %>
+	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+<% end %>

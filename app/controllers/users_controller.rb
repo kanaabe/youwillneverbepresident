@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def new
-    
+  
+  def new  
   end
 
   def index
@@ -8,14 +8,18 @@ class UsersController < ApplicationController
     @user.twitter_handle = params[:twitter_handle]
     @user.email = params[:email]
     @tweets = @user.get_twitter_dirt
+    @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
   end
 
   def login
-    #@user = User.koala(request.env['omniauth.auth']['credentials'])
-    @user = User.koala('')
+    session[:fb_auth] = request.env['omniauth.auth']['credentials']
     redirect_to root_path
   end
 
+  def logout
+    reset_session
+    redirect_to root_path
+  end
 
   private
   def user_params
