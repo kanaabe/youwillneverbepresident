@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.koala(request.env['omniauth.auth']['credentials'])
+    #@user = User.koala(request.env['omniauth.auth']['credentials'])
+    @user = User.koala('')
+    redirect_to root_path
   end
 
 
