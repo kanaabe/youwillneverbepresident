@@ -39,6 +39,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    domain_name (0.5.22)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
@@ -51,6 +53,8 @@ GEM
     hike (1.2.3)
     http (0.6.3)
       http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     http_parser.rb (0.6.0)
     i18n (0.6.11)
     jbuilder (2.2.5)
@@ -68,15 +72,30 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.7.2)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0.0)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
+    ntlm-http (0.1.1)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -167,6 +186,10 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
+    webrobots (0.1.1)
 
 PLATFORMS
   ruby
@@ -177,6 +200,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   koala (~> 1.10.0rc)
+  mechanize
+  nokogiri
   obscenity
   omniauth-facebook
   pg

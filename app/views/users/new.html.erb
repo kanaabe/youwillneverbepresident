@@ -3,10 +3,10 @@
 <h3>Step 1: <%= link_to "Login with Facebook", '/auth/facebook' %></h3>
 <h3>Step 2: Tell us some of your other aliases</h3>
 <%= form_tag users_path, :method => "get" do |f|%>
-  <%= label_tag :twitter_handle %>
+  <%= label_tag "Twitter Handle" %>
   <%= text_field_tag :twitter_handle %><br>
   <%= label_tag "Old Email" %>
-  <%= text_field_tag :email %><br>
+  <%= text_field_tag :old_email %><br>
   <h3>Step 3: Search!</h3>
   <%= submit_tag "Search"%>
 <% end %>

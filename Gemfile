@@ -39,6 +39,10 @@ gem "koala", "~> 1.10.0rc"
 
 gem "omniauth-facebook"
 
+gem "nokogiri"
+
+gem "mechanize"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

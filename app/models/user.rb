@@ -1,5 +1,6 @@
 class User
-  attr_accessor :twitter_handle, :email, :facebook
+
+  attr_accessor :twitter_handle, :old_email, :facebook
 
   def get_twitter_dirt
     twitter_user = TwitterDirt.new(@twitter_handle)
@@ -16,4 +17,8 @@ class User
   	@facebook.obscene_statuses
   end
 
+  def get_myspace_photo
+    myspace_user = Myspace.new(@old_email)
+    myspace_user.scrape_myspace_for_profile_photo
+  end
 end

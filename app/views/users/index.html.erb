@@ -1,3 +1,5 @@
+<h1>Hello, <%= @user.old_email %></h1>
+<img src="<%= @myspace_photo %>" alt="Myspace Profile Picture"> 
 <% if @tweets.size > 0 %>
 	<h2>Your tainted tweets: </h2>
 	<% @tweets.each do |tweet| %>
@@ -5,8 +7,8 @@
 	<% end %>
 <% else %>
 	<h2>Good job! Your tweets are squeaky clean. </h2>
-  <%= @user.email %>
 <% end %>
+
 
 <% if @facebook_statuses.size > 0 %>
 	<h2>Your profane Facebook statuses: </h2>
@@ -16,3 +18,6 @@
 <% else %>
 	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
 <% end %>
+
+
+
