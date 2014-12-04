@@ -1,5 +1,5 @@
 class User
-  attr_accessor :twitter_handle
+  attr_accessor :twitter_handle, :email
 
   def get_twitter_dirt
     twitter_user = TwitterDirt.new(@twitter_handle)
