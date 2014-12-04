@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   def index
     @user = User.new
     @user.twitter_handle = params[:twitter_handle]
-    @user.email = params[:email]
+    @user.old_email = params[:old_email]
     @tweets = @user.get_twitter_dirt
+    @myspace_photo = @user.get_myspace_photo
   end
 
   def login

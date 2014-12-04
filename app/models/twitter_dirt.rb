@@ -23,15 +23,6 @@ class TwitterDirt
     tweets.flatten.uniq
   end
 
-  # Obscenity.configure do |config|
-  #   config.whitelist   = ["aids", "baller", "balling", 
-  #     "big baller", "bigballer", "cocaine", "condom", 
-  #     "crap", "devil", "eggplant", "drugs", "flip",
-  #     "hell", "genocide", "ho", "kill", "lsd", "marijuana",
-  #     "murder", "pcp", "psilocybin", "redneck", "slope",
-  #     "suicide", "transvestite", "transexual"]
-  # end
-
   def obscene_tweets
     get_user_timeline.select do |tweet|
       Obscenity.profane?(tweet.text)
