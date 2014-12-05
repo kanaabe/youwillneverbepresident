@@ -3,9 +3,16 @@ class FacebookDirt
 	def initialize(auth)
 		@token = auth
 		@facebook = Koala::Facebook::API.new(@token)
+		Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
+        "big baller", "bigballer", "cocaine", "condom", 
+        "crap", "devil", "eggplant", "drugs", "flip",
+        "hell", "genocide", "ho", "kill", "lsd", "marijuana",
+        "murder", "pcp", "psilocybin", "redneck", "slope",
+        "suicide", "transvestite", "transexual", "#yolo", "yolo","drunk","wasted","#wasted","weed","bong", "funnel", "kegstand","keg stand","party","21st birthday"]
 	end
 
 	def obscene_photos
+		set_obscenity_config_photo
 		response = @facebook.get_object("me/photos")
 		photos = []
 		while response != [] && !response.nil?
@@ -26,10 +33,28 @@ class FacebookDirt
 	def obscene_photo?(res)
 		if !res["comments"].nil?
 			res["comments"]["data"].each do |comment|
-				return true if Obscenity.profane?(comment["message"])
+				return true if profane_comment?(comment["message"])
 			end
 		end
 		false
+	end
+
+	def profane_comment?(message)
+		# message = message.split(" ")
+		# message.each do |word|
+		# 	return true if PROFANE_WORDS.include?(word)
+		# end
+		Obscenity.profane?(message)
+		# false
+	end
+
+	def set_obscenity_config_photo
+		Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
+        "big baller", "bigballer", "cocaine", "condom", 
+        "crap", "devil", "eggplant", "drugs", "flip",
+        "hell", "genocide", "ho", "kill", "lsd", "marijuana",
+        "murder", "pcp", "psilocybin", "redneck", "slope",
+        "suicide", "transvestite", "transexual","fuck"]
 	end
 
 	def obscene_statuses

@@ -1,0 +1,30 @@
+
+
+.masonry{
+	max-width: 100%;
+}
+
+.masonry .item,
+.masonry .grid-sizer {
+	width:25%;
+}
+
+.masonry .item,
+.masonry .grid-sizer {
+   height: 350px;
+   float: left;
+}
+
+@media screen and (max-width:768px) {
+	.masonry .item,
+  .masonry .grid-sizer {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:480px) {
+	.masonry .item,
+	.masonry .grid-sizer {
+		width: 100%;
+  }
+}

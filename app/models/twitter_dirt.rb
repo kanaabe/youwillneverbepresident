@@ -4,6 +4,12 @@ class TwitterDirt
     @twitter_client = initialize_twitter_client
     @tweets_per_page = 200
     @handle = handle
+    Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
+        "big baller", "bigballer", "cocaine", "condom", 
+        "crap", "devil", "eggplant", "drugs", "flip",
+        "hell", "genocide", "ho", "kill", "lsd", "marijuana",
+        "murder", "pcp", "psilocybin", "redneck", "slope",
+        "suicide", "transvestite", "transexual", "#yolo", "yolo","drunk","wasted","#wasted","weed","bong", "funnel", "kegstand","keg stand","party","21st birthday"]
   end
 
   # returns the number of pages we need to iterate through in get_user_timeline

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "/loader" %>
 <h1>You Will Never Be President</h1>
 
 <h3>Step 1: <%= link_to "Login with Facebook", '/auth/facebook' %></h3>
@@ -8,6 +9,6 @@
   <%= label_tag "Old Email" %>
   <%= text_field_tag :old_email %><br>
   <h3>Step 3: Search!</h3>
-  <%= submit_tag "Search"%>
+  <%= submit_tag "Search", :id=>"submit_button"%>
 <% end %>
 </br>

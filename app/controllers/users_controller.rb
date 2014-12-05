@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
     @facebook_photos = @user.get_facebook_photo_dirt
     @myspace_photo = @user.get_myspace_photo
-
   end
 
   def login

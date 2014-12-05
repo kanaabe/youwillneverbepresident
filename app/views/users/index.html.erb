@@ -22,9 +22,17 @@
 
 <% if !@facebook_photos.nil? %>
 	<h2>Your profane Facebook photos: </h2>
+	<div id="container">
+	<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+	<div class="grid-sizer">
 	<% @facebook_photos.each do |photo| %>
-	  <img src="<%=photo["images"].first["source"]%>"><br><br>
-	<% end %>
+    <div class="item">
+      <img src="<%=photo["images"].first["source"]%>" class="thumbnail img-responsive">
+    </div>
+  <% end %>
+  </div>
+	</div></div>
+
 <% else %>
 	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
 <% end %>
