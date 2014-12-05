@@ -12,6 +12,10 @@ class Myspace
     mechanize = Mechanize.new
     page = mechanize.get("https://myspace.com/search/people?q=#{@old_email}")
     profile_page = page.links[20].click
-    profile_page.links[0].attributes.search("img").first.attributes["src"].value
+    if profile_page.links[0].attributes.search("img").size == 0
+      return nil
+    else
+      return profile_page.links[0].attributes.search("img").first.attributes["src"].value
+    end
   end
 end
