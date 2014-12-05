@@ -1,20 +1,36 @@
-<h1>Hello, <%= @user.old_email %></h1>
-<img src="<%= @myspace_photo %>" alt="Myspace Profile Picture"> 
-<% if @tweets.size > 0 %>
+<% if @user.old_email %>
+  <h1>Hello, <%= @user.old_email %></h1>
+<% end %>
+
+<% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
+  <h2>You've covered your Myspace tracks well.</h2>
+  <% elsif @myspace_photo %>
+  <h3>Say hello to your old Myspace self:</h3>
+  <img src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
+<% elsif !@myspace_photo%>
+  <h5>input your old email so we can do some Myspace digging</h5>
+<% end %>
+   
+
+<% if !@tweets.nil? %>
 	<h2>Your tainted tweets: </h2>
 	<% @tweets.each do |tweet| %>
 	  <%= tweet.text %><br><br>
 	<% end %>
+<% elsif @tweets.nil?%>
+  <h5>input your twitter handle to check your tweets</h5>
 <% else %>
 	<h2>Good job! Your tweets are squeaky clean. </h2>
 <% end %>
 
 
-<% if @facebook_statuses.size > 0 %>
+<% if !@facebook_statuses.nil? %>
 	<h2>Your profane Facebook statuses: </h2>
 	<% @facebook_statuses.each do |status| %>
 	  <%= status %><br><br>
 	<% end %>
+<% elsif @facebook_statuses.nil?%>
+  <h5>login with Facebook to check your photos and statuses.</h5>
 <% else %>
 	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
 <% end %>
@@ -23,16 +39,17 @@
 <% if !@facebook_photos.nil? %>
 	<h2>Your profane Facebook photos: </h2>
 	<div id="container">
-	<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
-	<div class="grid-sizer">
-	<% @facebook_photos.each do |photo| %>
-    <div class="item">
-      <img src="<%=photo["images"].first["source"]%>" class="thumbnail img-responsive">
+  	<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+    	<div class="grid-sizer">
+      	<% @facebook_photos.each do |photo| %>
+      	  <div class="item">
+            <img src="<%=photo["images"].first["source"]%>" class="thumbnail img-responsive">
+          </div>
+      	<% end %>
+      </div>
     </div>
-  <% end %>
   </div>
-	</div></div>
-
+<% elsif @facebook_statuses.nil?%>
 <% else %>
-	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+	<h2>Good job! Your Facebook photos are squeaky clean. </h2>
 <% end %>
