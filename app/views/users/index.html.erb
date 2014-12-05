@@ -20,4 +20,11 @@
 <% end %>
 
 
-
+<% if !@facebook_photos.nil? %>
+	<h2>Your profane Facebook photos: </h2>
+	<% @facebook_photos.each do |photo| %>
+	  <img src="<%=photo["images"].first["source"]%>"><br><br>
+	<% end %>
+<% else %>
+	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+<% end %>

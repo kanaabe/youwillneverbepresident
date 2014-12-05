@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     @user.old_email = params[:old_email]
     @tweets = @user.get_twitter_dirt
     @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
+    @facebook_photos = @user.get_facebook_photo_dirt
     @myspace_photo = @user.get_myspace_photo
+
   end
 
   def login

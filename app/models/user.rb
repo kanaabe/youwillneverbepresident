@@ -17,6 +17,10 @@ class User
   	@facebook.obscene_statuses
   end
 
+  def get_facebook_photo_dirt
+    @facebook.obscene_photos
+  end
+
   def get_myspace_photo
     myspace_user = Myspace.new(@old_email)
     myspace_user.scrape_myspace_for_profile_photo

@@ -2,6 +2,34 @@ class FacebookDirt
 
 	def initialize(auth)
 		@token = auth
+		@facebook = Koala::Facebook::API.new(@token)
+	end
+
+	def obscene_photos
+		response = @facebook.get_object("me/photos")
+		photos = []
+		while response != [] && !response.nil?
+			photos << get_photos_for_a_page(response)
+			response = response.next_page
+		end
+		photos.flatten
+	end
+
+	def get_photos_for_a_page(response)
+		photos = []
+		response.each do |res|
+			photos << res if obscene_photo?(res)
+		end
+		photos
+	end
+
+	def obscene_photo?(res)
+		if !res["comments"].nil?
+			res["comments"]["data"].each do |comment|
+				return true if Obscenity.profane?(comment["message"])
+			end
+		end
+		false
 	end
 
 	def obscene_statuses
@@ -9,7 +37,6 @@ class FacebookDirt
 		#response = JSON.parse(IO.read("app/test_data/kana_data.json"))
 		
 		# Production
-		@facebook = Koala::Facebook::API.new(@token)
   	response = @facebook.get_object("me/statuses?limit=100")
   	statuses = []
   	while response != []
@@ -28,6 +55,5 @@ class FacebookDirt
 		end
 		statuses
 	end
-
 
 end
