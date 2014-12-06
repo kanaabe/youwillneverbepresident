@@ -9,7 +9,9 @@ class TwitterDirt
         "crap", "devil", "eggplant", "drugs", "flip",
         "hell", "genocide", "ho", "kill", "lsd", "marijuana",
         "murder", "pcp", "psilocybin", "redneck", "slope",
-        "suicide", "transvestite", "transexual", "#yolo", "yolo","drunk","wasted","#wasted","weed","bong", "funnel", "kegstand","keg stand","party","21st birthday"]
+        "suicide", "transvestite", "transexual", "#yolo", "yolo",
+        "drunk","wasted","#wasted","weed","bong", "funnel", "kegstand",
+        "keg stand","party","21st birthday", "hipster", "pimp"]
   end
 
   # returns the number of pages we need to iterate through in get_user_timeline
