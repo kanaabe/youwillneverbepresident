@@ -15,7 +15,7 @@
 <% if !@tweets.nil? %>
 	<h2>Your tainted tweets: </h2>
 	<% @tweets.each do |tweet| %>
-	  <%= tweet.text %><br><br>
+	  <%= tweet.html_safe %><br><br>
 	<% end %>
 <% elsif @tweets.nil?%>
   <h5>input your twitter handle to check your tweets</h5>

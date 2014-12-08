@@ -58,6 +58,7 @@ class FacebookDirt
 	end
 
 	def obscene_statuses
+    binding.pry
 		# Development
 		#response = JSON.parse(IO.read("app/test_data/kana_data.json"))
 		
