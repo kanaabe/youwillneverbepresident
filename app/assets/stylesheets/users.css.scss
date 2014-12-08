@@ -1,19 +1,78 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http:\/\/fonts.googleapis.com/css?family=Open+Sans:700);
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 .background {
-  background-color: #c0392b;
+  background-color: #ecf0f1;
   background-size: 100%;
   background-repeat: no-repeat;
+  color: #2c3e50;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.uncle-sam {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.title {
+
+}
+
+.red {
+  color: #c0392b;
+  text-shadow: -2px 0 #2c3e50, 0 2px #2c3e50, 2px 0 #2c3e50, 0 -2px #2c3e50;
+  display: inline-block;
+  margin-left: 90px;
+}
+
+.blue {
+  color: #2c3e50;
+  text-shadow: -2px 0 #c0392b, 0 2px #c0392b, 2px 0 #c0392b, 0 -2px #c0392b;
+  display: inline-block;
+  margin-left: 20px;
 }
 
 .jumbotronish{
   opacity: 1;
   width: 550px;
   display: block;
-  margin-left: auto;
+  margin-left: 50px;
   margin-right: auto;
-  margin-top: 200px;
+  margin-top: 50px;
   border-radius: 25px;
+  display: inline-block;
+
 }
+
+/* unvisited link */
+a:link {
+    color: #2c3e50;
+}
+
+/* visited link */
+a:visited {
+    color: #2c3e50;
+}
+
+/* mouse over link */
+a:hover {
+    color: #2c3e50;
+}
+
+/* selected link */
+a:active {
+    color: #2c3e50;
+}
+
+#main-footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:30px;   /* Height of the footer */
+  background:#ecf0f1;
+} 
