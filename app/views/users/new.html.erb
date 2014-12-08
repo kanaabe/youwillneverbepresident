@@ -1,14 +1,37 @@
 <%= javascript_include_tag "/loader" %>
-<h1>You Will Never Be President</h1>
 
-<h3>Step 1: <%= link_to "Login with Facebook", '/auth/facebook' %></h3>
-<h3>Step 2: Tell us some of your other aliases</h3>
-<%= form_tag users_path, :method => "get" do |f|%>
-  <%= label_tag "Twitter Handle" %>
-  <%= text_field_tag :twitter_handle %><br>
-  <%= label_tag "Old Email" %>
-  <%= text_field_tag :old_email %><br>
-  <h3>Step 3: Search!</h3>
-  <%= submit_tag "Search", :id=>"submit_button"%>
-<% end %>
-</br>
+<body class="background">
+  <div class="title">
+    <div class="red">
+      <h1 style="font-size:80px; display: inline-block;">YOU </h1>
+    </div>
+    <div class="blue">
+      <h1 style="font-size:80px; display: inline-block;"> WILL NEVER BE PRESIDENT</h1>
+    </div>
+  </div>  
+  <div class="uncle-sam" style=>
+    <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam" style="width:500px;">
+  </div>
+  <div class="jumbotronish">
+    <h3>Step 1: <%= link_to "Login with Facebook", '/auth/facebook' %></h3>
+    <h3>Step 2: Tell us some of your other aliases</h3>
+    <%= form_tag users_path, :method => "get" do |f|%>
+      <!-- creating the twitter handle input field -->
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">@</span>
+          <%#= text_field_tag :twitter_handle, placeholder: 'Enter your Twitter handle' %>
+          <input id="twitter_handle" name="twitter_handle" type="text" class="form-control" placeholder="Enter your Twitter handle">
+      </div>
+      <br>
+      <!-- creating the email input field -->
+      <div class="input-group input-group-lg">
+        <%#= text_field_tag :old_email, placeholder: 'Enter your old email address' %>
+        <input id="old_email" name="old_email" type="text" class="form-control" size="60" placeholder="          Enter your old email address">
+      </div>
+      <div class="btn-group">
+        <h3>Step 3: Search!</h3>
+        <%= submit_tag "Search", class: "btn btn-default btn-lg"%>
+      </div>
+    <% end %>
+  </div>
+</body>
