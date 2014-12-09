@@ -1,5 +1,4 @@
 .masonry{
-	max-width: 100%;
 }
 
 .masonry .item,
@@ -9,8 +8,12 @@
 
 .masonry .item,
 .masonry .grid-sizer {
-   height: 350px;
+   height: auto;
    float: left;
+}
+.grid-sizer{
+	width:100%;
+	padding-right: 5%;
 }
 
 @media screen and (max-width:768px) {

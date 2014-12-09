@@ -66,8 +66,7 @@
 
 <% if !@facebook_photos.nil? %>
 	<h2>Your profane Facebook photos: </h2>
-	<div id="container">
-  	<div class="masonry js-masonry" data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+  	<div class="masonry js-masonry" data-masonry-options='{ "isFitWidth": true, "itemSelector": ".item" }'>
     	<div class="grid-sizer">
       	<% @facebook_photos.each do |photo| %>
       	  <div class="item">
@@ -76,7 +75,6 @@
       	<% end %>
       </div>
     </div>
-  </div>
 <% elsif @facebook_statuses.nil?%>
 <% else %>
 	<h2>Good job! Your Facebook photos are squeaky clean. </h2>
