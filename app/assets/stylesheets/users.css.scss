@@ -70,6 +70,33 @@ a:active {
     color: #2c3e50;
 }
 
+.tweets {
+  display: inline-block;
+}
+
+.fb-status {
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;  
+}
+
+.fb-status-box {
+  background-color: white;
+  width: 400px;
+  box-shadow: 1px 1px 1px #888888;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.fb-inside-the-box {
+  padding-top: 5px;
+  margin-left: 5px;
+}
+
+.fb-name {
+  font-weight: bold;
+  color: #3b5998;
+}
+
 #main-footer {
   position:fixed;
   bottom:0;

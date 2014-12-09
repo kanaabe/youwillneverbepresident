@@ -12,6 +12,10 @@ class User
   	facebook = FacebookDirt.new(access_token)
   end
 
+  def fb_username
+    @facebook = FacebookDirt.new(auth['token'])
+  end
+
   def get_facebook_status_dirt(auth)
   	@facebook = FacebookDirt.new(auth['token'])
   	@facebook.obscene_statuses
