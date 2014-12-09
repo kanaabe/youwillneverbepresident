@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     if session[:twitter_handle] != ""
       @user.twitter_handle = session[:twitter_handle]
       @tweets = @user.get_twitter_dirt
+      @all_tweets = @user.get_all_tweets
+      @twitter_percentage = (@tweets.size.to_f/@all_tweets.size.to_f).round(3)
     end
     
     if session[:old_email] != ""
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
     if session[:fb_auth] != nil
       @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
       @facebook_photos = @user.get_facebook_photo_dirt
+      @fb_percentage = (@user.get_facebook_photo_dirt.size / @user.total_fb_photo_count.to_f).round(3)
     end
     render :results
   end

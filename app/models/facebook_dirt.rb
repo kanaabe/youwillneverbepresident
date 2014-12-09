@@ -1,4 +1,5 @@
 class FacebookDirt
+   @@total_photos = 0 
 
 	def initialize(auth)
 		@token = auth
@@ -26,9 +27,14 @@ class FacebookDirt
 		photos = []
 		response.each do |res|
 			photos << res if obscene_photo?(res)
+      @@total_photos += 1
 		end
 		photos
 	end
+
+  def self.total_photos
+    @@total_photos
+  end
 
 	def obscene_photo?(res)
 		if !res["comments"].nil?

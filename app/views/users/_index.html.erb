@@ -1,54 +1,67 @@
-<% if @user.old_email %>
-  <h1>Hello, <%= @user.old_email %></h1>
-<% end %>
+<div class="results-page">
+<div class="jumbotron" style="background-color: white; padding-left:50px;margin-right:50px;padding-top: 20px;">
+  <div >
+    <% if @user.old_email %>
+      <h1>Hello, <%= @user.old_email %>. <%= @twitter_percentage %>% of your tweets are profane. <%= @fb_percentage %>% for Facebook photos.</h1>
+    <% end %> <br>
 
-<% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
-  <h2>You've covered your Myspace tracks well.</h2>
-  <% elsif @myspace_photo %>
-  <h3>Say hello to your old Myspace self:</h3>
-  <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
-<% elsif !@myspace_photo%>
-  <h5>input your old email so we can do some Myspace digging</h5>
-<% end %>
-   
-<div class="tweets">
-  <% if !@tweets.nil? && @tweets.size>0%>
-  	<h2>Your tainted tweets: </h2>
-  	<% @tweets.each do |tweet| %>
-    <div class="tweets">
-  	  <%= tweet.html_safe %><br><br>
-    </div>
-  	<% end %>
-  <% elsif @tweets.nil?%>
-    <h5>input your twitter handle to check your tweets</h5>
-  <% else %>
-  	<h2>Good job! Your tweets are squeaky clean. </h2>
-  <% end %>
+    <% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
+      <h2>You've covered your Myspace tracks well.</h2>
+      <% elsif @myspace_photo %>
+      <!-- <h3>Say hello to your old Myspace self:</h3> -->
+      <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
+    <% elsif !@myspace_photo%>
+      <h5>input your old email so we can do some Myspace digging</h5>
+    <% end %>
+  </div>
 </div>
 
-<div>
-  <% if !@facebook_statuses.nil? %>
-  	<h2>Your profane Facebook statuses: </h2>
-  	<% @facebook_statuses.each do |status| %>
-      <div class="fb-status-box">
-        <div class="bs-example fb-status">
-          <div class="media fb-inside-the-box">
-            <a class="media-left" href="#">
-              <img data-src="holder.js/48x48" alt="64x64" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAolBMVEVfea9ddalRa6RYcqpjfLJFYZxacqZBXZk8TG9HWHtUb6dfeKtkfrNXcqlohrdfeK84U4n///98msRKZZ7i6Pbp7vj4+f3F0ezt8fne5fX09vzP2fC/zevR2/BHX5A/V4p0kr8qPWU1R21RaZ1JWn5ObqyNmbQ4SnBgd6FphbJVa5ZhfatebZBKbKpEZKJ0kbvR1+Ojr8d7iKSNncKgr86/yd/ojLsHAAACXElEQVRIiaWW6XbaMBCFR9gFL0KqcUj3xgRD2Bri0L7/q3U2BdsH57in15Y0ujOfRr8MUBTNKR2pU1MUULzWu/NilM67+rWApj5Xzo6Sq85pA6ddNa6ctNidID3b2No4jjvDamgl1gLrzimkCyuWlWQYwYljqRV4gUAF6OAAiDnCBcVBDOv1TxFbMVQpJBVXxBCqidYz1rvmpRCB1FQJAR7Ae5yAJk+xTOumeBMb3geAqgE0YBajeXN/lZQoIGWB0AD88b4NSI4BvY2HEHjBmz6Ar2NgPvd+zlfEaE7i7Usb4ISfUwdHFVEUyaIvja+i5YW24kcuALekwKXtIfDkoiiLsgx3tGR0fEYjAJimHb6YdE8IYDGWZSyOhIs+izDiJB2aKXBbCnS8QeABtRQ9sK7Ao80mfWWTZU93mrEETLJQdlUf+BOARwJu6K6n3y0AxgAX9YGAclKWGJfyoHDqA/uyDdxQH8jU90MA6Yuo41EH/y8AdfAfBqRAx0NgFbX2ZTvsApwqoxWsNkMdfog63mbV7TAK2MxmGM1I7MmMyxswozTOWKHAbSnQ8d4Fvon+D/iFwPPHASnQ8Z5X+PuQD0iBjoe/D8kg8EnU8fhznxuTG97yamiPi1HAmGDiw99WjqVIjjGk/ApolhICSKWRlw/iJt9FnSQDRk/VW+WhTQA4p9cWYDqd4kB7OuUFAwoVMJLkTL5HYJ9TgVSFgIewepRgFoH64HLecB9uwgp9r/X4uEMN2+TorNGeU6OE3E8vqZk8d8dkC8UpORzdKB0PyQn/zRTbOhmpelsUfwH2dHGUr3sL2AAAAABJRU5ErkJggg==" data-holder-rendered="true" style="width: 48px; height: 48px;">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading fb-name"><%= status["from"]["name"] %></h4>
-              <p><%= status["message"] %></p>
+
+<div class="jumbotron">
+
+  <div class="tweets">
+    <% if !@tweets.nil? %>
+    	<h2>Your tainted tweets: </h2>
+    	<% @tweets.each do |tweet| %>
+      <div class="tweets">
+    	  <p><%= tweet.html_safe %></p>
+      </div>
+    	<% end %>
+    <% elsif @tweets.nil?%>
+      <h5>input your twitter handle to check your tweets</h5>
+    <% else %>
+    	<h2>Good job! Your tweets are squeaky clean. </h2>
+    <% end %>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div>
+    <% if !@facebook_statuses.nil? %>
+    	<h2>Your profane Facebook statuses: </h2>
+    	<% @facebook_statuses.each do |status| %>
+        <p>
+          <div class="fb-status-box">
+            <div class="bs-example fb-status">
+              <div class="media fb-inside-the-box">
+                <a class="media-left" href="#">
+                  <img data-src="holder.js/48x48" alt="64x64" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAolBMVEVfea9ddalRa6RYcqpjfLJFYZxacqZBXZk8TG9HWHtUb6dfeKtkfrNXcqlohrdfeK84U4n///98msRKZZ7i6Pbp7vj4+f3F0ezt8fne5fX09vzP2fC/zevR2/BHX5A/V4p0kr8qPWU1R21RaZ1JWn5ObqyNmbQ4SnBgd6FphbJVa5ZhfatebZBKbKpEZKJ0kbvR1+Ojr8d7iKSNncKgr86/yd/ojLsHAAACXElEQVRIiaWW6XbaMBCFR9gFL0KqcUj3xgRD2Bri0L7/q3U2BdsH57in15Y0ujOfRr8MUBTNKR2pU1MUULzWu/NilM67+rWApj5Xzo6Sq85pA6ddNa6ctNidID3b2No4jjvDamgl1gLrzimkCyuWlWQYwYljqRV4gUAF6OAAiDnCBcVBDOv1TxFbMVQpJBVXxBCqidYz1rvmpRCB1FQJAR7Ae5yAJk+xTOumeBMb3geAqgE0YBajeXN/lZQoIGWB0AD88b4NSI4BvY2HEHjBmz6Ar2NgPvd+zlfEaE7i7Usb4ISfUwdHFVEUyaIvja+i5YW24kcuALekwKXtIfDkoiiLsgx3tGR0fEYjAJimHb6YdE8IYDGWZSyOhIs+izDiJB2aKXBbCnS8QeABtRQ9sK7Ao80mfWWTZU93mrEETLJQdlUf+BOARwJu6K6n3y0AxgAX9YGAclKWGJfyoHDqA/uyDdxQH8jU90MA6Yuo41EH/y8AdfAfBqRAx0NgFbX2ZTvsApwqoxWsNkMdfog63mbV7TAK2MxmGM1I7MmMyxswozTOWKHAbSnQ8d4Fvon+D/iFwPPHASnQ8Z5X+PuQD0iBjoe/D8kg8EnU8fhznxuTG97yamiPi1HAmGDiw99WjqVIjjGk/ApolhICSKWRlw/iJt9FnSQDRk/VW+WhTQA4p9cWYDqd4kB7OuUFAwoVMJLkTL5HYJ9TgVSFgIewepRgFoH64HLecB9uwgp9r/X4uEMN2+TorNGeU6OE3E8vqZk8d8dkC8UpORzdKB0PyQn/zRTbOhmpelsUfwH2dHGUr3sL2AAAAABJRU5ErkJggg==" data-holder-rendered="true" style="width: 48px; height: 48px;">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading fb-name"><%= status["from"]["name"] %></h4>
+                  <p><%= status["message"] %></p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-  	<% end %>
-  <% elsif @facebook_statuses.nil?%>
-    <h5>login with Facebook to check your photos and statuses.</h5>
-  <% else %>
-  	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
-  <% end %>
+        </p>        
+    	<% end %>
+    <% elsif @facebook_statuses.nil?%>
+      <h5>login with Facebook to check your photos and statuses.</h5>
+    <% else %>
+    	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+    <% end %>
+  </div>
 </div>
 
 <% if !@facebook_photos.nil? %>
@@ -70,3 +83,4 @@
 <% end %>
 <br>
 <br>
+</div>
