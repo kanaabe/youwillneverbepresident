@@ -4,17 +4,19 @@ class UsersController < ApplicationController
   end
 
   def results
+    session[:twitter_handle] = params[:twitter_handle]
+    session[:old_email] = params[:old_email]
   end
 
   def index
     @user = User.new
-    if params[:twitter_handle] != ""
-      @user.twitter_handle = params[:twitter_handle]
+    if session[:twitter_handle] != ""
+      @user.twitter_handle = session[:twitter_handle]
       @tweets = @user.get_twitter_dirt
     end
     
-    if params[:old_email] != ""
-      @user.old_email = params[:old_email]
+    if session[:old_email] != ""
+      @user.old_email = session[:old_email]
       @myspace_photo = @user.get_myspace_photo
     end
 

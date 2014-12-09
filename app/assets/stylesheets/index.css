@@ -1,11 +1,9 @@
-
-
 .masonry{
 	max-width: 100%;
 }
 
 .masonry .item,
-.masonry .grid-sizer {
+.masonry .grid-sizer{
 	width:25%;
 }
 

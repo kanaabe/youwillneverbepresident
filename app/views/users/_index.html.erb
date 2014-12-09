@@ -12,7 +12,7 @@
 <% end %>
    
 <div class="tweets">
-  <% if !@tweets.nil? %>
+  <% if !@tweets.nil? && @tweets.size>0%>
   	<h2>Your tainted tweets: </h2>
   	<% @tweets.each do |tweet| %>
     <div class="tweets">
