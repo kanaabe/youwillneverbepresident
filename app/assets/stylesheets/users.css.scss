@@ -38,6 +38,15 @@ body {
   margin-left: 20px;
 }
 
+.jumbotron {
+
+}
+
+.results-page {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
 .jumbotronish{
   opacity: 1;
   width: 550px;
@@ -47,7 +56,6 @@ body {
   margin-top: 50px;
   border-radius: 25px;
   display: inline-block;
-
 }
 
 /* unvisited link */
@@ -71,7 +79,7 @@ a:active {
 }
 
 .tweets {
-  display: inline-block;
+  
 }
 
 .fb-status {

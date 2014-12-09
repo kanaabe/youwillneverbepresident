@@ -2,6 +2,11 @@ class User
 
   attr_accessor :twitter_handle, :old_email, :facebook
 
+  def get_all_tweets
+    twitter_user = TwitterDirt.new(@twitter_handle)
+    twitter_user.get_user_timeline
+  end
+
   def get_twitter_dirt
     twitter_user = TwitterDirt.new(@twitter_handle)
     twitter_user.obscene_tweets
@@ -23,6 +28,10 @@ class User
 
   def get_facebook_photo_dirt
     @facebook.obscene_photos
+  end
+
+  def total_fb_photo_count
+    FacebookDirt.total_photos 
   end
 
   def get_myspace_photo
