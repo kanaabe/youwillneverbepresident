@@ -43,11 +43,11 @@ class TwitterDirt
   def obscene_tweets
     embedded_tweets = []
     get_user_timeline.each do |tweet|
+      if embedded_tweets.size > 100
+        break
+      end
       if Obscenity.profane?(tweet.text)
         embedded_tweets << @twitter_client.oembed(tweet)["html"]
-        if embedded_tweets.size > 150
-          break
-        end
       end
     end
     embedded_tweets
