@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   def new  
   end
 
+  def results
+  end
+
   def index
     @user = User.new
     if params[:twitter_handle] != ""
@@ -19,6 +22,7 @@ class UsersController < ApplicationController
       @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
       @facebook_photos = @user.get_facebook_photo_dirt
     end
+    render :results
   end
 
   def login
