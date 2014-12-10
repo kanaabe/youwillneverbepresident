@@ -2,7 +2,7 @@
 }
 
 .masonry .item,
-.masonry .grid-sizer{
+.masonry{
 	width:25%;
 }
 
@@ -12,7 +12,7 @@
    float: left;
 }
 .grid-sizer{
-	width:100%;
+	width:90%;
 	padding-right: 5%;
 }
 
