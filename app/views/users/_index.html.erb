@@ -80,7 +80,7 @@
 
 <% if !@facebook_photos.nil? %>
 	<h2>Your profane Facebook photos: </h2>
-  	<div class="masonry js-masonry" data-masonry-options='{ "isFitWidth": true, "itemSelector": ".item" }'>
+  	<div class="masonry js-masonry" data-masonry-options='{ "isFitWidth": true, "itemSelector": ".item" }' style="width:100%">
     	<div class="grid-sizer">
       	<% @facebook_photos.each do |photo| %>
       	  <div class="item">
