@@ -1,10 +1,10 @@
 <div class="results-page">
-<div class="jumbotron" style="background-color: white; padding-left:50px;margin-right:50px;padding-top: 20px;">
-  <div >
+<div class="jumbotron" style="background-color: white; padding-left:50px;margin-right:50px;padding-top: 20px;padding-right: 50px;">
+  
     <% if @user.old_email %>
-      <h1>Hello, <%= @user.old_email %>. <%= @twitter_percentage %>% of your tweets are profane. <%= @fb_percentage %>% for Facebook photos.</h1>
+      <h1>Hello, <%= @user.old_email %></h1>
     <% end %> <br>
-
+  <div class="percentages">
     <% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
       <h2>You've covered your Myspace tracks well.</h2>
       <% elsif @myspace_photo %>
@@ -14,7 +14,21 @@
       <h5>input your old email so we can do some Myspace digging</h5>
     <% end %>
   </div>
+  <div class="percentages" style="margin-left:60px;margin-right:60px;">
+    <% if !@tweets.nil? && !@facebook_photos.nil? %>
+      <div style="font-size:110px;"><%= @fb_percentage %>%</div>
+      <div style="font-size:20px;"><p>The percentage of facebook<br>photos that may be embarrassing.</p></div>
+    <% end %>
+  </div>
+  <div class="percentages">
+    <% if !@tweets.nil? && !@facebook_photos.nil? %>
+      <div style="font-size:110px;"><%= @twitter_percentage %>%</div>
+      <div style="font-size:20px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
+    <% end %>
+  </div>
 </div>
+
+
 
 
 <div class="jumbotron">
