@@ -22,7 +22,7 @@ $(function(){
 
     function setTime(i){
         setTimeout(function(){
-            $("img").attr("src",files[i]);
+            $("#load_img").attr("src",files[i]);
             $('#load_text')[0].innerHTML = text[i];
             //debugger;
         },6000*i);

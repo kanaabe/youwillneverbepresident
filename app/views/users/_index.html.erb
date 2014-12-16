@@ -4,26 +4,33 @@
     <% if @user.old_email %>
       <h1>Hello, <%= @user.old_email %></h1>
     <% end %> <br>
-  <div class="percentages">
+  <div class="percentages_image">
     <% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
       <h2>You've covered your Myspace tracks well.</h2>
       <% elsif @myspace_photo %>
       <!-- <h3>Say hello to your old Myspace self:</h3> -->
       <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
+    <% elsif @twitter_photo%>
+      <img class="img-circle" src="<%= @twitter_photo %>" alt="Twitter Profile Picture" style="vertical-align:bottom;">
     <% elsif !@myspace_photo%>
-      <h5>input your old email so we can do some Myspace digging</h5>
+      <!-- <h5>input your old email so we can do some Myspace digging</h5> -->
     <% end %>
   </div>
-  <div class="percentages" style="margin-left:60px;margin-right:60px;">
-    <% if !@tweets.nil? && !@facebook_photos.nil? %>
+<!--   <div class="percentages" style="margin-left:60px;margin-right:60px;">
+    <#% if !@tweets.nil? && !@facebook_photos.nil? %>
       <div style="font-size:110px;"><%= @fb_percentage %>%</div>
       <div style="font-size:20px;"><p>The percentage of facebook<br>photos that may be embarrassing.</p></div>
+    <#% end %>
+  </div> -->
+  <div class="percentages">
+    <% if !@tweets.nil?%>
+      <div style="font-size:110px;margin-bottom:45px;"><%= @twitter_percentage %>%</div>
     <% end %>
   </div>
+
   <div class="percentages">
-    <% if !@tweets.nil? && !@facebook_photos.nil? %>
-      <div style="font-size:110px;"><%= @twitter_percentage %>%</div>
-      <div style="font-size:20px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
+    <% if !@tweets.nil?%>
+      <div style="font-size:20px;margin-bottom:88px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
     <% end %>
   </div>
 </div>
@@ -34,7 +41,7 @@
 <div class="jumbotron">
 
   <div class="tweets">
-    <% if !@tweets.nil? %>
+    <% if @tweets.size > 0%>
     	<h2>Your tainted tweets: </h2>
     	<% @tweets.each do |tweet| %>
       <div class="tweets">
@@ -42,7 +49,7 @@
       </div>
     	<% end %>
     <% elsif @tweets.nil?%>
-      <h5>input your twitter handle to check your tweets</h5>
+      <h5>Input your twitter handle to check your tweets</h5>
     <% else %>
     	<h2>Good job! Your tweets are squeaky clean. </h2>
     <% end %>
@@ -71,9 +78,9 @@
         </p>        
     	<% end %>
     <% elsif @facebook_statuses.nil?%>
-      <h5>login with Facebook to check your photos and statuses.</h5>
+      <!-- <h5>login with Facebook to check your photos and statuses.</h5> -->
     <% else %>
-    	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+    	<!-- <h2>Good job! Your Facebook statuses are squeaky clean. </h2> -->
     <% end %>
   </div>
 </div>
@@ -91,7 +98,7 @@
     </div>
 <% elsif @facebook_statuses.nil?%>
 <% else %>
-	<h2>Good job! Your Facebook photos are squeaky clean. </h2>
+	<!-- <h2>Good job! Your Facebook photos are squeaky clean. </h2> -->
 <% end %>
 <br>
 <br>

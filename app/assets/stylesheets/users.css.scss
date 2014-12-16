@@ -25,7 +25,13 @@ body {
 }
 
 .percentages {
-    display: inline-block;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-left: 60px;
+}
+
+.percentages_image{
+  display: inline-block;
 }
 
 .red {
