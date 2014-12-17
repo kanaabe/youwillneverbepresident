@@ -19,8 +19,8 @@ class UsersController < ApplicationController
     end
     
     if session[:old_email] != ""
-      @user.old_email = session[:old_email]
-      @myspace_photo = @user.get_myspace_photo
+      # @user.old_email = session[:old_email]
+      # @myspace_photo = @user.get_myspace_photo
     end
 
     if session[:fb_auth] != nil
