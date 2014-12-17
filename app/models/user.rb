@@ -14,7 +14,7 @@ class User
 
   def get_twitter_photo
     twitter_user = TwitterDirt.new(@twitter_handle)
-    twitter_user.twitter_client.user.profile_image_url.to_s.gsub("_normal","")
+    twitter_user.twitter_client.user(@twitter_handle).profile_image_url.to_s.gsub("_normal","")
   end
 
   def self.koala(auth)
