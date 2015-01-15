@@ -10,7 +10,6 @@
     <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam" style="width:500px;">
   </div>
   <div class="jumbotronish">
-    <!-- <h3>Step 1: <%#= link_to "Login with Facebook", '/auth/facebook' %></h3> -->
     <!-- <h3>Tell us some of your aliases</h3> -->
     <%= form_tag results_path, :method => "get" do |f|%>
       <!-- creating the twitter handle input field -->
@@ -30,6 +29,10 @@
         <%= submit_tag "Search", class: "btn btn-default btn-lg"%>
       </div>
     <% end %>
+    <br>
+    <br>
+    <br>
+    <h3><%= link_to "Authenticate Facebook", '/auth/facebook' %></h3>
   </div>
 
   
