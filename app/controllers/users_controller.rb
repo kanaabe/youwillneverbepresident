@@ -24,9 +24,9 @@ class UsersController < ApplicationController
     end
 
     if session[:fb_auth] != nil
-      #@facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
-      #@facebook_photos = @user.get_facebook_photo_dirt
-      #@fb_percentage = (@user.get_facebook_photo_dirt.size / @user.total_fb_photo_count.to_f).round(3)
+      @facebook_statuses = @user.get_facebook_status_dirt(session[:fb_auth])
+      @facebook_photos = @user.get_facebook_photo_dirt
+      @fb_percentage = (@user.get_facebook_photo_dirt.size / @user.total_fb_photo_count.to_f).round(3)
     end
     render :results
   end

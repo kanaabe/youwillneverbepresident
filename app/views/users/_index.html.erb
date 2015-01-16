@@ -35,21 +35,18 @@
   </div>
 </div>
 
-
-
-
 <div class="jumbotron">
-
   <div class="tweets">
-    <% if @tweets.size > 0%>
-    	<h2>Your tainted tweets: </h2>
-    	<% @tweets.each do |tweet| %>
-      <div class="tweets">
-    	  <p><%= tweet.html_safe %></p>
-      </div>
-    	<% end %>
-    <% elsif @tweets.nil?%>
+
+    <% if @tweets.nil?%>
       <h5>Input your twitter handle to check your tweets</h5>
+    <% elsif @tweets.size > 0%>
+      <h2>Your tainted tweets: </h2>
+      <% @tweets.each do |tweet| %>
+      <div class="tweets">
+        <p><%= tweet.html_safe %></p>
+      </div>
+      <% end %>
     <% else %>
     	<h2>Good job! Your tweets are squeaky clean. </h2>
     <% end %>
@@ -78,15 +75,15 @@
         </p>        
     	<% end %>
     <% elsif @facebook_statuses.nil?%>
-      <!-- <h5>login with Facebook to check your photos and statuses.</h5> -->
+      <h5>login with Facebook to check your photos and statuses.</h5>
     <% else %>
-    	<!-- <h2>Good job! Your Facebook statuses are squeaky clean. </h2> -->
+    	<h2>Good job! Your Facebook statuses are squeaky clean. </h2>
     <% end %>
   </div>
 </div>
 
 <% if !@facebook_photos.nil? %>
-	<h2>Your profane Facebook photos: </h2>
+	<h2>Your potentially embarrassing Facebook photos: </h2>
   	<div class="masonry js-masonry" data-masonry-options='{ "isFitWidth": true, "itemSelector": ".item" }' style="width:100%">
     	<div class="grid-sizer">
       	<% @facebook_photos.each do |photo| %>
@@ -98,7 +95,7 @@
     </div>
 <% elsif @facebook_statuses.nil?%>
 <% else %>
-	<!-- <h2>Good job! Your Facebook photos are squeaky clean. </h2> -->
+	<h2>Good job! Your Facebook photos are squeaky clean. </h2>
 <% end %>
 <br>
 <br>
