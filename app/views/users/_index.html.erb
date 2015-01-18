@@ -12,8 +12,10 @@
       <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
     <% elsif @twitter_photo%>
       <img class="img-circle" src="<%= @twitter_photo %>" alt="Twitter Profile Picture" style="vertical-align:bottom;">
-    <% elsif !@myspace_photo%>
-      <!-- <h5>input your old email so we can do some Myspace digging</h5> -->
+    <% elsif @facebook_photos%>
+      <img class="img-circle" src="<%= @facebook_photos[0]["images"].first["source"] %>" alt="Facebook Picture" style="vertical-align:bottom;">
+    <% else %>
+      <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" class="img-circle" alt="Uncle Sam" style="width:500px;">
     <% end %>
   </div>
 <!--   <div class="percentages" style="margin-left:60px;margin-right:60px;">
