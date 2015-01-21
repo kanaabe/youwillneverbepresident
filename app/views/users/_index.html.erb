@@ -91,6 +91,13 @@
       	<% @facebook_photos.each do |photo| %>
       	  <div class="item">
             <img src="<%=photo["images"].first["source"]%>" class="thumbnail img-responsive">
+            <div>
+              <ul>
+                <% photo["comments"]["data"].each do |comment| %>
+                  <li class="fb-comment"><span class="fb-comment-name"><%= comment["from"]["name"] %></span> <%= comment["message"] %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
       	<% end %>
       </div>

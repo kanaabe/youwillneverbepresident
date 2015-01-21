@@ -14,6 +14,7 @@
 .grid-sizer{
 	width:90%;
 	padding-right: 5%;
+	padding-bottom:50px;
 }
 
 @media screen and (max-width:768px) {
@@ -28,4 +29,17 @@
 	.masonry .grid-sizer {
 		width: 100%;
   }
+}
+
+
+.fb-comment{
+	padding: 4px;
+	background-color: #e9eaed;
+	border:none;
+	margin: 1px;
+}
+
+.fb-comment-name{
+	color: #3b5998;
+	font-weight: bold;
 }
