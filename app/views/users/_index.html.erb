@@ -42,11 +42,7 @@
       <h5>Input your twitter handle to check your tweets</h5>
     <% elsif @tweets.size > 0%>
       <h2>Your tainted tweets: </h2>
-      <% @tweets.each do |tweet| %>
-      <div class="tweets">
-        <p><%= tweet.html_safe %></p>
-      </div>
-      <% end %>
+        <p><%= render "users/twitter" %></p>
     <% else %>
     	<h2>Good job! Your tweets are squeaky clean. </h2>
     <% end %>

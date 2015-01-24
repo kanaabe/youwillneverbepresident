@@ -20,21 +20,10 @@ class TwitterDirt
   end
 
   def get_user_timeline
-
     tweets = @twitter_client.user_timeline(@handle, :count => @tweets_per_page)
-    begin
-      last_tweet = tweets.last.id
-    rescue
-      puts tweets
-    end
+    last_tweet = tweets.last.id
     (number_of_pages - 1).times do
-      
       tweet_batch = @twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
-      begin
-        last_tweet = tweet_batch.last.id
-      rescue
-        puts tweets
-      end
       tweets << tweet_batch
     end
     tweets.flatten.uniq
@@ -43,11 +32,8 @@ class TwitterDirt
   def obscene_tweets
     embedded_tweets = []
     get_user_timeline.each do |tweet|
-      if embedded_tweets.size > 100
-        break
-      end
       if Obscenity.profane?(tweet.text)
-        embedded_tweets << @twitter_client.oembed(tweet)["html"]
+        embedded_tweets << tweet
       end
     end
     embedded_tweets
