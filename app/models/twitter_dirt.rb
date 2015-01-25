@@ -2,7 +2,7 @@ class TwitterDirt
   attr_accessor :twitter_client
   def initialize(handle)
     @twitter_client = initialize_twitter_client
-    @tweets_per_page = 200
+    @tweets_per_page = 100.0
     @handle = handle
     Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
         "big baller", "bigballer", "cocaine", "condom", 
@@ -16,26 +16,16 @@ class TwitterDirt
 
   # returns the number of pages we need to iterate through in get_user_timeline
   def number_of_pages
-    ((@twitter_client.user(@handle).tweets_count)/@tweets_per_page).ceil
+    (((@twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
   end
 
   def get_user_timeline
-
     tweets = @twitter_client.user_timeline(@handle, :count => @tweets_per_page)
-    begin
-      last_tweet = tweets.last.id
-    rescue
-      puts tweets
-    end
+    last_tweet = tweets.last.id
     (number_of_pages - 1).times do
-      
       tweet_batch = @twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
-      begin
-        last_tweet = tweet_batch.last.id
-      rescue
-        puts tweets
-      end
       tweets << tweet_batch
+      last_tweet = tweets.flatten.last.id
     end
     tweets.flatten.uniq
   end
@@ -43,11 +33,8 @@ class TwitterDirt
   def obscene_tweets
     embedded_tweets = []
     get_user_timeline.each do |tweet|
-      if embedded_tweets.size > 100
-        break
-      end
       if Obscenity.profane?(tweet.text)
-        embedded_tweets << @twitter_client.oembed(tweet)["html"]
+        embedded_tweets << tweet
       end
     end
     embedded_tweets
