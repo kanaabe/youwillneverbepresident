@@ -23,14 +23,13 @@
 
     <div class="footer customisable-border" data-scribe="component:footer">
       <span class="stats-narrow customisable-border"><span class="stats" data-scribe="component:stats">
-        <a href="https://twitter.com/loganhasson/status/396801652399030273" title="View Tweet on Twitter" data-scribe="element:retweet_count">
+        <a href="<%= tweet.url %>" title="View Tweet on Twitter" data-scribe="element:retweet_count">
           <span class="stats-retweets">
-            <strong>1</strong> Retweet
-          </span>
-        </a>
-        <a href="https://twitter.com/loganhasson/status/396801652399030273" title="View Tweet on Twitter" data-scribe="element:favorite_count">
-          <span class="stats-favorites">
-            <strong>1</strong> favorite
+            <% if tweet.retweet? %>
+              Too offensive? Undo this retweet
+            <% else %>  
+              Delete this tweet
+            <% end %>
           </span>
         </a>
       </span>
