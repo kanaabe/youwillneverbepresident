@@ -25,8 +25,8 @@ class TwitterDirt
     (number_of_pages - 1).times do
       tweet_batch = @twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
       tweets << tweet_batch
+      last_tweet = tweets.flatten.last.id
     end
-            binding.pry
     tweets.flatten.uniq
   end
 
