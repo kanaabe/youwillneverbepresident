@@ -14,7 +14,6 @@ class TwitterDirt
         "keg stand","party","21st birthday", "hipster", "pimp"]
   end
 
-  # returns the number of pages we need to iterate through in get_user_timeline
   def number_of_pages
     (((@twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
   end
