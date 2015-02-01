@@ -86,4 +86,8 @@ class FacebookDirt
 		statuses
 	end
 
+	def get_name
+		@facebook.get_object("me")["name"]
+	end
+
 end

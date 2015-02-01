@@ -39,6 +39,10 @@ class User
     FacebookDirt.total_photos 
   end
 
+  def get_name
+    @facebook.get_name
+  end
+
   def get_myspace_photo
     myspace_user = Myspace.new(@old_email)
     myspace_user.scrape_myspace_for_profile_photo
