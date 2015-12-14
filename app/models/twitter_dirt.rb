@@ -1,8 +1,8 @@
 class TwitterDirt
-  attr_accessor :twitter_client
+  attr_accessor :twitter_client, :timeline
   def initialize(handle)
-    @twitter_client = initialize_twitter_client
-    @tweets_per_page = 100.0
+    @twitter_client = initialize_twitter_client; puts "Hit the initialize"
+    @tweets_per_page = 200.0
     @handle = handle
     Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
         "big baller", "bigballer", "cocaine", "condom", 
@@ -14,35 +14,48 @@ class TwitterDirt
         "keg stand","party","21st birthday", "hipster", "pimp"]
   end
 
+  def twitter_client
+    puts "Request to Twitter API"
+    @twitter_client
+  end
+
   def number_of_pages
-    (((@twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
+    puts 'Hit #number_of_pages'
+    (((twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
   end
 
   def get_user_timeline
-    tweets = @twitter_client.user_timeline(@handle, :count => @tweets_per_page)
+    tweets = twitter_client.user_timeline(@handle, :count => @tweets_per_page); puts 'Hit #get_user_timeline'
     last_tweet = tweets.last.id
     (number_of_pages - 1).times do
-      tweet_batch = @twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
+    # 3.times do
+      puts 'Hit #get_user_timeline/loop'
+      tweet_batch = twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
       tweets << tweet_batch
       last_tweet = tweets.flatten.last.id
     end
-    tweets.flatten.uniq
+    timeline = tweets.flatten.uniq
   end
 
   def obscene_tweets
-    embedded_tweets = []
+    arr_of_tweets = []
+    loop_count = 0
+    puts 'Begin #obscene_tweets/loop'
     get_user_timeline.each do |tweet|
       if Obscenity.profane?(tweet.text)
-        embedded_tweets << tweet
+        arr_of_tweets << tweet
       end
+      loop_count += 1
     end
-    embedded_tweets
+    puts 'obscene_tweets loop: ' + loop_count
+    arr_of_tweets
   end
 
 
 
   private
     def initialize_twitter_client
+      puts 'Twitter#initialize_twitter_client'
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
