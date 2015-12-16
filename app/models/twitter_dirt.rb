@@ -15,7 +15,7 @@ class TwitterDirt
   end
 
   def twitter_client
-    puts "Request to Twitter API"
+    puts "! Request to Twitter API"
     @twitter_client
   end
 
@@ -55,7 +55,7 @@ class TwitterDirt
 
   private
     def initialize_twitter_client
-      puts 'Twitter#initialize_twitter_client'
+      puts '!!! Twitter#initialize_twitter_client'
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
