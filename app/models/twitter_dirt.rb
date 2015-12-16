@@ -1,5 +1,5 @@
 class TwitterDirt
-  attr_accessor :twitter_client, :timeline
+  attr_accessor :twitter_client
   def initialize(handle)
     @twitter_client = initialize_twitter_client; puts "Hit the initialize"
     @tweets_per_page = 200.0
@@ -21,20 +21,21 @@ class TwitterDirt
 
   def number_of_pages
     puts 'Hit #number_of_pages'
-    (((twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
+    page_count = (((twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
+    # Twitter only allows access to the 3200 most recent tweets 3200/200 = 16 pages
+    page_count > 16 ? 16 : page_count
   end
 
   def get_user_timeline
     tweets = twitter_client.user_timeline(@handle, :count => @tweets_per_page); puts 'Hit #get_user_timeline'
     last_tweet = tweets.last.id
     (number_of_pages - 1).times do
-    # 3.times do
       puts 'Hit #get_user_timeline/loop'
       tweet_batch = twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
       tweets << tweet_batch
       last_tweet = tweets.flatten.last.id
     end
-    timeline = tweets.flatten.uniq
+    tweets.flatten.uniq
   end
 
   def obscene_tweets
@@ -47,7 +48,7 @@ class TwitterDirt
       end
       loop_count += 1
     end
-    puts 'obscene_tweets loop: ' + loop_count
+    puts "obscene_tweets loop: #{loop_count}"
     arr_of_tweets
   end
 
