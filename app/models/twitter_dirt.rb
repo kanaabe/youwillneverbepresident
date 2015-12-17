@@ -1,5 +1,5 @@
 class TwitterDirt
-  attr_accessor :twitter_client
+  attr_accessor :twitter_client, :timeline_size
   def initialize(handle)
     @twitter_client = initialize_twitter_client; puts "Hit the initialize"
     @tweets_per_page = 200.0
@@ -35,6 +35,7 @@ class TwitterDirt
       tweets << tweet_batch
       last_tweet = tweets.flatten.last.id
     end
+    self.timeline_size = tweets.flatten.uniq.size
     tweets.flatten.uniq
   end
 
