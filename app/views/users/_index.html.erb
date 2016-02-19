@@ -12,15 +12,8 @@
 
     <!-- PHOTO -->
     <div class="percentages_image">
-      <% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
-        <h2>You've covered your Myspace tracks well.</h2>
-        <% elsif @myspace_photo %>
-        <!-- <h3>Say hello to your old Myspace self:</h3> -->
-        <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
-      <% elsif @twitter_photo%>
+      <% if @twitter_photo %>
         <img class="img-circle" src="<%= @twitter_photo %>" alt="Twitter Profile Picture" style="vertical-align:bottom;">
-      <% elsif @facebook_photos%>
-        <img class="img-circle" src="<%= @facebook_photos[0]["images"].first["source"] %>" alt="Facebook Picture" style="vertical-align:bottom;">
       <% else %>
         <img class="img-circle" src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam">
       <% end %>

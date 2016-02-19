@@ -1,5 +1,5 @@
 class TwitterDirt
-  attr_accessor :twitter_client, :timeline_size
+  attr_accessor :twitter_client, :timeline_size, :handle
   def initialize(handle)
     @twitter_client = initialize_twitter_client; puts "Hit the initialize"
     @tweets_per_page = 200.0
@@ -55,7 +55,7 @@ class TwitterDirt
 
   def get_twitter_photo
     puts "Model: get twitter photo"
-    twitter_client.user(@twitter_handle).profile_image_url.to_s.gsub("_normal","")
+    twitter_client.user(handle).profile_image_url.to_s.gsub("_normal","")
   end
 
 
