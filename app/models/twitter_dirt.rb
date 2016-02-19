@@ -53,6 +53,10 @@ class TwitterDirt
     arr_of_tweets
   end
 
+  def get_twitter_photo
+    puts "Model: get twitter photo"
+    twitter_client.user(@twitter_handle).profile_image_url.to_s.gsub("_normal","")
+  end
 
 
   private
