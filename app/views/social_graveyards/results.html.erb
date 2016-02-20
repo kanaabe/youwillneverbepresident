@@ -1,0 +1,118 @@
+<div class="results-page">
+  <div class="jumbotron" style="background-color: white; padding-left:50px;margin-right:50px;padding-top: 20px;padding-right: 50px;">
+
+    <!-- NAME -->
+    <% if @user.old_email %>
+      <h1>Hello, <%= @user.old_email %></h1>
+    <% elsif @user.twitter_handle %>
+      <h1>Hello, <%= @user.twitter_handle %></h1>
+    <% elsif @facebook_name %>
+      <h1>Hello, <%= @facebook_name %></h1>
+    <% end %> <br>
+
+    <!-- PHOTO -->
+    <div class="percentages_image">
+      <% if @myspace_photo == "https://x.myspacecdn.com/new/common/images/user.png"%>
+        <h2>You've covered your Myspace tracks well.</h2>
+        <% elsif @myspace_photo %>
+        <!-- <h3>Say hello to your old Myspace self:</h3> -->
+        <img class="img-circle" src="<%= @myspace_photo %>" alt="Myspace Profile Picture">
+      <% elsif @twitter_photo%>
+        <img class="img-circle" src="<%= @twitter_photo %>" alt="Twitter Profile Picture" style="vertical-align:bottom;">
+      <% elsif @facebook_photos%>
+        <img class="img-circle" src="<%= @facebook_photos[0]["images"].first["source"] %>" alt="Facebook Picture" style="vertical-align:bottom;">
+      <% else %>
+        <img class="img-circle" src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam">
+      <% end %>
+    </div>
+
+    <!-- PERCENTAGES -->
+    <!--   <div class="percentages" style="margin-left:60px;margin-right:60px;">
+      <#% if !@tweets.nil? && !@facebook_photos.nil? %>
+        <div style="font-size:110px;"><%= @fb_percentage %>%</div>
+        <div style="font-size:20px;"><p>The percentage of facebook<br>photos that may be embarrassing.</p></div>
+      <#% end %>
+    </div> -->
+    <div class="percentages">
+      <% if !@tweets.nil?%>
+        <div style="font-size:110px;margin-bottom:45px;"><%= @twitter_percentage %>%</div>
+      <% end %>
+    </div>
+
+    <div class="percentages">
+      <% if !@tweets.nil?%>
+        <div style="font-size:20px;margin-bottom:88px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
+      <% end %>
+    </div>
+  </div>
+
+<!-- <div class="jumbotron"> -->
+  <!-- <div class="tweets"> -->
+
+    <% if @tweets.nil?%>
+      <h2>Input your twitter handle to check your tweets</h2>
+    <% elsif @tweets.size > 0%>
+      <h2>Your tainted tweets: </h2>
+        <p><%= render "users/twitter" %></p>
+    <% else %>
+      <h2>Good job! Your tweets are squeaky clean. </h2>
+    <% end %>
+<!--   </div> -->
+<!-- </div> -->
+
+<div class="jumbotron">
+  <div>
+    <% if !@facebook_statuses.nil? %>
+      <h2>Your profane Facebook statuses: </h2>
+      <% @facebook_statuses.each do |status| %>
+        <p>
+          <div class="fb-status-box">
+            <div class="bs-example fb-status">
+              <div class="media fb-inside-the-box">
+                <a class="media-left" href="#">
+                  <img data-src="holder.js/48x48" alt="64x64" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAolBMVEVfea9ddalRa6RYcqpjfLJFYZxacqZBXZk8TG9HWHtUb6dfeKtkfrNXcqlohrdfeK84U4n///98msRKZZ7i6Pbp7vj4+f3F0ezt8fne5fX09vzP2fC/zevR2/BHX5A/V4p0kr8qPWU1R21RaZ1JWn5ObqyNmbQ4SnBgd6FphbJVa5ZhfatebZBKbKpEZKJ0kbvR1+Ojr8d7iKSNncKgr86/yd/ojLsHAAACXElEQVRIiaWW6XbaMBCFR9gFL0KqcUj3xgRD2Bri0L7/q3U2BdsH57in15Y0ujOfRr8MUBTNKR2pU1MUULzWu/NilM67+rWApj5Xzo6Sq85pA6ddNa6ctNidID3b2No4jjvDamgl1gLrzimkCyuWlWQYwYljqRV4gUAF6OAAiDnCBcVBDOv1TxFbMVQpJBVXxBCqidYz1rvmpRCB1FQJAR7Ae5yAJk+xTOumeBMb3geAqgE0YBajeXN/lZQoIGWB0AD88b4NSI4BvY2HEHjBmz6Ar2NgPvd+zlfEaE7i7Usb4ISfUwdHFVEUyaIvja+i5YW24kcuALekwKXtIfDkoiiLsgx3tGR0fEYjAJimHb6YdE8IYDGWZSyOhIs+izDiJB2aKXBbCnS8QeABtRQ9sK7Ao80mfWWTZU93mrEETLJQdlUf+BOARwJu6K6n3y0AxgAX9YGAclKWGJfyoHDqA/uyDdxQH8jU90MA6Yuo41EH/y8AdfAfBqRAx0NgFbX2ZTvsApwqoxWsNkMdfog63mbV7TAK2MxmGM1I7MmMyxswozTOWKHAbSnQ8d4Fvon+D/iFwPPHASnQ8Z5X+PuQD0iBjoe/D8kg8EnU8fhznxuTG97yamiPi1HAmGDiw99WjqVIjjGk/ApolhICSKWRlw/iJt9FnSQDRk/VW+WhTQA4p9cWYDqd4kB7OuUFAwoVMJLkTL5HYJ9TgVSFgIewepRgFoH64HLecB9uwgp9r/X4uEMN2+TorNGeU6OE3E8vqZk8d8dkC8UpORzdKB0PyQn/zRTbOhmpelsUfwH2dHGUr3sL2AAAAABJRU5ErkJggg==" data-holder-rendered="true" style="width: 48px; height: 48px;">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading fb-name"><%= status["from"]["name"] %></h4>
+                  <p><%= status["message"] %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p>        
+      <% end %>
+    <% elsif @facebook_statuses.nil?%>
+      <h2>Login with Facebook to check your photos and statuses.</h2>
+    <% else %>
+      <h2>Good job! Your Facebook statuses are squeaky clean. </h2>
+    <% end %>
+  </div>
+</div>
+
+<% if !@facebook_photos.nil? %>
+  <h2>Your potentially embarrassing Facebook photos: </h2>
+    <div class="masonry js-masonry" data-masonry-options='{ "isFitWidth": true, "itemSelector": ".item" }' style="width:100%">
+      <div class="grid-sizer">
+        <% @facebook_photos.each do |photo| %>
+          <div class="item">
+            <img src="<%=photo["images"].first["source"]%>" class="thumbnail img-responsive">
+            <div>
+              <ul>
+                <% photo["comments"]["data"].each do |comment| %>
+                  <li class="fb-comment"><span class="fb-comment-name"><%= comment["from"]["name"] %></span> <%= comment["message"] %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+<% elsif @facebook_statuses.nil?%>
+<% else %>
+  <h2>Good job! Your Facebook photos are squeaky clean. </h2>
+<% end %>
+<br>
+<br>
+</div>
+
+

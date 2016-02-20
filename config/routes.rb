@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'logout', to: 'users#logout'
 
   get 'results', to:'users#results', as:"results"
-
+  get 'beta', to: 'social_graveyards#index'
+  get 'beta_results', to: 'social_graveyards#results'
 end

@@ -1,3 +1,5 @@
+  <h1>BETA</h1>
+
   <div class="title">
     <div class="red">
       <h1 style="font-size:80px; display: inline-block;">YOU </h1>
@@ -9,19 +11,26 @@
   <div class="uncle-sam" style=>
     <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam" style="width:500px;">
   </div>
-
-  <!-- TWITTER FORM -->
   <div class="jumbotronish">
-    <%= form_tag results_path, :method => "get" do |f|%>
+    <%= form_tag beta_results_path, :method => "get" do |f|%>
+      <!-- creating the twitter handle input field -->
+      
+
+      <!-- MYSPACE -->
       <div class="input-group input-group-lg">
-        <span class="input-group-addon">@</span>
-          <input id="twitter_handle" name="twitter_handle" type="text" class="form-control" placeholder="Enter your Twitter handle">
+        <%#= text_field_tag :old_email, placeholder: 'Enter your old email address' %>
+        <input id="old_email" name="old_email" type="text" class="form-control" size="60" placeholder="          Enter your old email address">
       </div>
       <div class="btn-group">
       </br>
         <%= submit_tag "Search", class: "btn btn-default btn-lg"%>
       </div>
     <% end %>
+    <br>
+    <br>
+    <br>
+    <!-- FACEBOOK -->
+    <h3><%= link_to "Authenticate Facebook", '/auth/facebook' %></h3>
   </div>
 
   
