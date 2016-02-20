@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   def index
     @user = User.new
     if session[:twitter_handle] != ""
-      @user.twitter_handle = session[:twitter_handle]
-      @tweets = @user.get_twitter_dirt
-      @all_tweets = @user.get_all_tweets
-      @all_tweets.size > 0 ? @twitter_percentage = (@tweets.size.to_f/@all_tweets.size.to_f).round(3) : @twitter_percentage = 0
-      @twitter_photo = @user.get_twitter_photo
+      @user.twitter_handle = session[:twitter_handle]; p "Users#index ln 14"
+      @tweets = @user.get_twitter_dirt; p "Users#index ln 15"
+      @all_tweets = @user.get_all_tweets; p "Users#index ln 16"
+      @all_tweets.size > 0 ? @twitter_percentage = (@tweets.size.to_f/@all_tweets.size.to_f).round(3) : @twitter_percentage = 0; p "Users#index ln 17"
+      @twitter_photo = @user.get_twitter_photo; p "Users#index ln 18"
     end
     
     if session[:old_email] != ""
