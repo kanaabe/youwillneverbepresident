@@ -1,9 +1,9 @@
 class TwitterDirt
-  attr_accessor :twitter_client
+  attr_accessor :twitter_client, :handle, :tweets_per_page
   def initialize(handle)
     p "TwitterDirt.new"
     @twitter_client = initialize_twitter_client
-    @tweets_per_page = 100.0
+    @tweets_per_page = 200.0
     @handle = handle
     Obscenity::Base.whitelist   = ["aids", "baller", "balling", 
         "big baller", "bigballer", "cocaine", "condom", 
@@ -17,18 +17,19 @@ class TwitterDirt
 
   def number_of_pages
     p "TwitterDirt#number_of_pages"
-    (((twitter_client.user(@handle).tweets_count)/@tweets_per_page)).ceil
+    page_count = (((twitter_client.user(handle).tweets_count)/tweets_per_page)).ceil
+    binding.pry
   end
 
   def get_user_timeline
     p 'TwitterDirt#get_user_timeline'
-    tweets = twitter_client.user_timeline(@handle, :count => @tweets_per_page)
+    tweets = twitter_client.user_timeline(handle, :count => tweets_per_page)
     last_tweet = tweets.last.id
     i=0
     (number_of_pages - 1).times do
       p 'TwitterDirt#get_user_timeline loop'
       i+=1
-      tweet_batch = twitter_client.user_timeline(@handle, :count => @tweets_per_page, :max_id => last_tweet )
+      tweet_batch = twitter_client.user_timeline(handle, :count => tweets_per_page, :max_id => last_tweet )
       tweets << tweet_batch
       last_tweet = tweets.flatten.last.id
     end
