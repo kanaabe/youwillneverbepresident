@@ -18,7 +18,7 @@ class TwitterDirt
   def number_of_pages
     p "TwitterDirt#number_of_pages"
     page_count = (((twitter_client.user(handle).tweets_count)/tweets_per_page)).ceil
-    binding.pry
+    page_count > 16 ? 16 : page_count
   end
 
   def get_user_timeline
