@@ -1,5 +1,5 @@
 class TwitterDirt
-  attr_accessor :twitter_client, :handle, :tweets_per_page
+  attr_accessor :twitter_client, :handle, :tweets_per_page, :timeline_size
   def initialize(handle)
     @twitter_client = initialize_twitter_client
     @tweets_per_page = 200.0
@@ -22,21 +22,18 @@ class TwitterDirt
   def get_user_timeline
     tweets = twitter_client.user_timeline(handle, :count => tweets_per_page)
     last_tweet = tweets.last.id
-    i=0
     (number_of_pages - 1).times do
-      i+=1
       tweet_batch = twitter_client.user_timeline(handle, :count => tweets_per_page, :max_id => last_tweet )
       tweets << tweet_batch
       last_tweet = tweets.flatten.last.id
     end
+    self.timeline_size = tweets.flatten.uniq.size 
     tweets.flatten.uniq
   end
 
   def obscene_tweets
     embedded_tweets = []
-    i=0
     get_user_timeline.each do |tweet|
-      i+=1
       if Obscenity.profane?(tweet.text)
         embedded_tweets << tweet
       end
@@ -44,13 +41,19 @@ class TwitterDirt
     embedded_tweets
   end
 
+  def get_twitter_photo
+    twitter_client.user(handle).profile_image_url.to_s.gsub("_normal","")
+  end
+
 
   def twitter_client
+    p "!"
     @twitter_client
   end
 
   private
     def initialize_twitter_client
+      p "!!!"
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
