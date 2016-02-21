@@ -1,5 +1,8 @@
+require "benchmark"
+require "timeout"
+
 class TwitterDirt
-  attr_accessor :twitter_client, :handle, :tweets_per_page, :timeline_size
+  attr_accessor :twitter_client, :handle, :tweets_per_page, :timeline_size, :timeline
   def initialize(handle)
     @twitter_client = initialize_twitter_client
     @tweets_per_page = 200.0
@@ -28,16 +31,26 @@ class TwitterDirt
       last_tweet = tweets.flatten.last.id
     end
     self.timeline_size = tweets.flatten.uniq.size 
-    tweets.flatten.uniq
+    self.timeline = tweets.flatten.uniq
   end
+
 
   def obscene_tweets
     embedded_tweets = []
-    get_user_timeline.each do |tweet|
-      if Obscenity.profane?(tweet.text)
-        embedded_tweets << tweet
+    get_user_timeline
+    begin
+      Timeout::timeout(13) do
+        timeline.each do |tweet|
+          if Obscenity.profane?(tweet.text)
+            embedded_tweets << tweet
+          end
+        end
       end
+    rescue Timeout::Error
+      embedded_tweets
+      puts t
     end
+    puts t
     embedded_tweets
   end
 
