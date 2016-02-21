@@ -1,21 +1,6 @@
 class User
 
-  attr_accessor :twitter_handle, :old_email, :facebook
-
-  def get_all_tweets
-    twitter_user = TwitterDirt.new(@twitter_handle)
-    twitter_user.get_user_timeline
-  end
-
-  def get_twitter_dirt
-    twitter_user = TwitterDirt.new(@twitter_handle)
-    twitter_user.obscene_tweets
-  end
-
-  def get_twitter_photo
-    twitter_user = TwitterDirt.new(@twitter_handle)
-    twitter_user.twitter_client.user(@twitter_handle).profile_image_url.to_s.gsub("_normal","")
-  end
+  attr_accessor :old_email, :facebook
 
   def self.koala(auth)
   	access_token = auth['token']
