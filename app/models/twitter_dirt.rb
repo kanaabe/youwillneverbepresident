@@ -48,9 +48,7 @@ class TwitterDirt
       end
     rescue Timeout::Error
       embedded_tweets
-      puts t
     end
-    puts t
     embedded_tweets
   end
 
