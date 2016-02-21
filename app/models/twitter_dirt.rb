@@ -58,13 +58,11 @@ class TwitterDirt
 
 
   def twitter_client
-    p "!"
     @twitter_client
   end
 
   private
     def initialize_twitter_client
-      p "!!!"
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
