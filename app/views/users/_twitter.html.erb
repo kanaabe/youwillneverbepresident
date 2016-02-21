@@ -18,7 +18,7 @@
       <div class="content e-entry-content" data-scribe="component:tweet">
         <p class="e-entry-title"><%= tweet.text %></p>
         <div class="dateline collapsible-container">
-          <a class="u-url customisable-highlight long-permalink" href="<%= tweet.url %>" data-datetime="2010-12-01T06:31:47+0000" data-scribe="element:full_timestamp"><time pubdate="" class="dt-updated" datetime="2010-12-01T06:31:47+0000" title="Time posted: 01 Dec 2010, 06:31:47 (UTC)">1:31 AM - 1 Dec 2010</time></a>
+          <a class="u-url customisable-highlight long-permalink" href="<%= tweet.url %>" data-datetime="2010-12-01T06:31:47+0000" data-scribe="element:full_timestamp"><time pubdate="" class="dt-updated" datetime="2010-12-01T06:31:47+0000" title="Time posted: 01 Dec 2010, 06:31:47 (UTC)"><%= tweet.created_at.strftime("%l:%M %p") %> - <%= tweet.created_at.strftime("%e %b %Y") %></time></a>
         </div> 
       </div>
 
