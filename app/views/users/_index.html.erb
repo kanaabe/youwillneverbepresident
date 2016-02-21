@@ -2,7 +2,7 @@
   <div class="jumbotron" style="background-color: white; padding-left:50px;margin-right:50px;padding-top: 20px;padding-right: 50px;">
 
     <!-- NAME -->
-    <h1>Hello, <%= @user.twitter_handle %></h1>
+    <h1>Hello, <%= @dirt.handle %></h1>
 
     <!-- PHOTO -->
     <div class="percentages_image">
@@ -10,15 +10,11 @@
     </div>
 
     <div class="percentages">
-      <% if !@tweets.nil?%>
-        <div style="font-size:110px;margin-bottom:45px;"><%= @twitter_percentage %>%</div>
-      <% end %>
+      <div style="font-size:110px;margin-bottom:45px;"><%= @twitter_percentage %>%</div>
     </div>
 
     <div class="percentages">
-      <% if !@tweets.nil?%>
-        <div style="font-size:20px;margin-bottom:88px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
-      <% end %>
+      <div style="font-size:20px;margin-bottom:88px;"><p>The percentage of tweets that <br> may be embarrassing or profane.</p></div>
     </div>
   </div>
 
