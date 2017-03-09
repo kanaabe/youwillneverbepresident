@@ -16,7 +16,7 @@
       </div>
       <div class="title col-md-12 col-md-offset-2">
         <div class="red subtitle">
-          <h2>Find&nbsp;&nbsp;Your&nbsp;&nbsp;Worst&nbsp;&nbsp;Tweets</h2>
+          <h2><%= "Find  Your  Worst  Tweets" %></h2>
         </div>
       </div>
       <div class="col-md-9 col-md-offset-2">
@@ -26,7 +26,7 @@
               <input id="twitter-handle" name="twitter_handle" type="text" class="form-control" placeholder="your_twitter_handle">
           </div>
           <div class="btn-group">
-            <%= submit_tag "Search", class: "btn btn-default"%>
+            <%= submit_tag "Search", class: "btn btn-default", type: 'hidden' %>
           </div>
         <% end %>
       </div>
