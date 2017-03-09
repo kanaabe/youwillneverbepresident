@@ -1,6 +1,6 @@
 @media (max-device-width: 988px){
   .uncle-sam img{
-    width:100% !important;
+    width: 90% !important;
   }
 
   .blue {
@@ -18,6 +18,7 @@
   #twitter-handle {
     font-size: 60px !important;
     height: 150px !important;
+    padding-bottom: 30px !important;
   }
 
   #at-symbol {
@@ -27,5 +28,9 @@
   .btn {
     display: block !important;
     width: 100px !important;
+  }
+
+  .subtitle h2{
+    font-size: 64px !important;
   }
 }
