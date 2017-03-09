@@ -24,10 +24,6 @@ body {
   margin-left: 40px;
 }
 
-.title {
-
-}
-
 .percentages {
   display: inline-block;
   vertical-align: text-bottom;
@@ -40,36 +36,31 @@ body {
 
 .red {
   color: #c0392b;
-  text-shadow: -2px 0 #2c3e50, 0 2px #2c3e50, 2px 0 #2c3e50, 0 -2px #2c3e50;
-  display: inline-block;
-  margin-left: 90px;
+  text-shadow: -1px 0 #2c3e50, 0 1px #2c3e50, 1px 0 #2c3e50, 0 -1px #2c3e50;
+  display: inline;
+  font-size:80px;
 }
 
 .blue {
   color: #2c3e50;
   text-shadow: -2px 0 #c0392b, 0 2px #c0392b, 2px 0 #c0392b, 0 -2px #c0392b;
-  display: inline-block;
-  margin-left: 20px;
+  display: inline;
+  font-size:80px;
 }
 
-.jumbotron {
+div.blue h1 {
+  font-size:170px;
+  display: inline-block;
+}
 
+div.red h1 {
+  font-size:170px;
+  display: inline-block;
 }
 
 .results-page {
   margin-left: 50px;
   margin-top: 50px;
-}
-
-.jumbotronish{
-  opacity: 1;
-  width: 550px;
-  display: block;
-  margin-left: 50px;
-  margin-right: auto;
-  margin-top: 50px;
-  border-radius: 25px;
-  display: inline-block;
 }
 
 /* unvisited link */
@@ -92,12 +83,8 @@ a:active {
     color: #2c3e50;
 }
 
-.tweets {
-
-}
-
 .fb-status {
-  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;  
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 }
 
 .fb-status-box {
@@ -125,8 +112,28 @@ a:active {
   width:100%;
   height:30px;   /* Height of the footer */
   background:#ecf0f1;
-} 
+}
 
 #load-banner{
   text-align:center;
+}
+
+
+.subtitle h2{
+  margin-top: -20px;
+}
+
+.twitter-form {
+  margin-top: 170px;
+  margin-left: 70px;
+}
+
+#twitter-handle {
+  height: 50px;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+#at-symbol {
+  font-size: 20px;
 }

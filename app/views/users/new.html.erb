@@ -1,33 +1,35 @@
-  <div class="title">
-    <div class="red">
-      <h1 style="font-size:80px; display: inline-block;">YOU </h1>
+  <div class="col-md-12">
+
+    <div class="uncle-sam col-md-3" style=>
+      <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam" style="width:500px;">
     </div>
-    <div class="blue">
-      <h1 style="font-size:80px; display: inline-block;"> WILL NEVER BE PRESIDENT</h1>
+
+    <!-- TWITTER FORM -->
+    <div class="col-md-6 twitter-form">
+      <div class="title col-md-12 col-md-offset-2">
+        <div class="blue">
+          Y
+        </div>
+        <div class="blue">
+         W N B P
+        </div>
+      </div>
+      <div class="title col-md-12 col-md-offset-2">
+        <div class="red subtitle">
+          <h2>Find&nbsp;&nbsp;Your&nbsp;&nbsp;Worst&nbsp;&nbsp;Tweets</h2>
+        </div>
+      </div>
+      <div class="col-md-9 col-md-offset-2">
+        <%= form_tag results_path, :method => "get" do |f|%>
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="at-symbol">@</span>
+              <input id="twitter-handle" name="twitter_handle" type="text" class="form-control" placeholder="your_twitter_handle">
+          </div>
+          <div class="btn-group">
+            <%= submit_tag "Search", class: "btn btn-default btn-sm"%>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>  
-  <div class="uncle-sam" style=>
-    <img src="http://upload.wikimedia.org/wikipedia/commons/d/df/Uncle_Sam_(pointing_finger).png" alt="Uncle Sam" style="width:500px;">
+
   </div>
-
-  <!-- TWITTER FORM -->
-  <div class="jumbotronish">
-    <%= form_tag results_path, :method => "get" do |f|%>
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">@</span>
-          <input id="twitter_handle" name="twitter_handle" type="text" class="form-control" placeholder="Enter your Twitter handle">
-      </div>
-      <div class="btn-group">
-      </br>
-        <%= submit_tag "Search", class: "btn btn-default btn-lg"%>
-      </div>
-    <% end %>
-  </div>
-
-  
-
-  
-
-
-
-

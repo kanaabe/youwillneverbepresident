@@ -43,6 +43,8 @@ gem "nokogiri"
 
 gem "mechanize"
 gem 'rails_12factor'
+gem 'sqlite3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -54,4 +56,3 @@ gem 'rails_12factor'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
